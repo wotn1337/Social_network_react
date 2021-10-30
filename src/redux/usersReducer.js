@@ -9,7 +9,7 @@ const TOGGLE_IS_FETCHING = 'users/TOGGLE_IS_FETCHING';
 const TOGGLE_FOLLOWING_IN_PROGRESS = 'users/TOGGLE_FOLLOWING_IN_PROGRESS';
 
 
-const initailState = {
+const initialState = {
 	users: [],
 	pageSize: 10,
 	totalUsersCount: 0,
@@ -18,7 +18,7 @@ const initailState = {
 	followingInProgress: []
 };
 
-const usersReducer = (state = initailState, action) => {
+const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FOLLOW:
 			return {
