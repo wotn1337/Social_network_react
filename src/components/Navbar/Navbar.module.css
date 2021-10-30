@@ -1,0 +1,41 @@
+.nav {
+    grid-area: nav;
+    background-color: #157575;
+    text-align: right;
+    padding: 10px 10px 30px 10px;
+    font-size: 20px;
+    height: 500px;
+    position: sticky;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item a {
+    text-decoration: none;
+    color: white;
+}
+
+.item a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.active {
+    text-decoration: underline;
+    color: #ffc699;
+}
+
+.item a:hover {
+    text-decoration: underline;
+    color: #ead7c7;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.item:last-child {
+    margin-top: 60px;
+}

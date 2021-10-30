@@ -1,0 +1,27 @@
+.item {
+
+}
+
+.item a {
+    color: #157575;
+}
+
+.item a:visited {
+    color: #157575;
+}
+
+.item a.active {
+    color: #ffc699;
+}
+
+.dialog {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 20px;
+}

@@ -1,0 +1,16 @@
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #157575;
+    height: fit-content;
+}
+
+.message:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.my_message {
+    background-color: #ffc699;
+    color: #157575;
+}

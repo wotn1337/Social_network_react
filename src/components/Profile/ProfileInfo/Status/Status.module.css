@@ -1,0 +1,17 @@
+.status {
+    grid-area: status;
+    font-size: 20px;
+}
+
+.status span {
+    cursor: default;
+}
+
+.status input {
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid #157575;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding: 0 5px;
+}

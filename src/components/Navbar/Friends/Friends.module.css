@@ -1,0 +1,17 @@
+.friends {
+    text-align: center;
+    margin-top: auto;
+}
+
+.title {
+    color: white;
+    font-size: 26px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.friends_block {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

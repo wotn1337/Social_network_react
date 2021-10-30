@@ -1,0 +1,56 @@
+.profile_info {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    grid-template-rows: 1fr;
+    padding: 20px;
+    background-color: #ead7c7;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.info {
+    display: grid;
+    grid-template-areas: "name contacts"
+                         "status contacts"
+                         "job contacts"
+                         "about contacts";
+    grid-template-columns: 1fr 30px;
+    grid-template-rows: 35px 35px 35px 1fr;
+    grid-row-gap: 5px;
+    grid-column-gap: 15px;
+}
+
+.info .name {
+    grid-area: name;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.info .job {
+    grid-area: job;
+    display: flex;
+    align-items: center;
+}
+
+.info .job .jobMark{
+    margin-right: 10px;
+}
+
+.info .about {
+    grid-area: about;
+    padding: 5px;
+    border: 2px solid #157575;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.info .contacts {
+    grid-area: contacts;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    display: block;
+    border-radius: 10px;
+}

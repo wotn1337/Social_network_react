@@ -1,0 +1,19 @@
+.header {
+    grid-area: header;
+    background-color: #157575;
+    color: white;
+    font-size: 34px;
+}
+
+.header .logo {
+    height: 100%;
+    margin-left: 20px;
+}
+
+.loginBlock {
+    float: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
