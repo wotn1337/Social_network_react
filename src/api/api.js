@@ -7,11 +7,11 @@ export const usersAPI = {
 	},
 
 	unfollow(id) {
-		return instance.delete(`follow/${id}`).then(response => response.data);
+		return instance.delete(`follow/${id}`);
 	},
 
 	follow(id) {
-		return instance.post(`follow/${id}`).then(response => response.data);
+		return instance.post(`follow/${id}`);
 	}
 };
 
