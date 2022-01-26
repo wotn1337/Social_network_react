@@ -17,3 +17,27 @@
     align-items: center;
     margin-right: 20px;
 }
+
+.profileInfo {
+    display: flex;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logoutArrow {
+    height: 50px;
+    transform: rotate(180deg);
+    transition: 500ms;
+}
+
+.logoutButton:hover .logoutArrow {
+    transform: rotate(180deg) translateX(-10px);
+}

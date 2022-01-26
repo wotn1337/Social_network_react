@@ -6,9 +6,29 @@
     background-color: #ead7c7;
     font-size: 20px;
     border-radius: 10px;
+    grid-template-areas: "avatar info"
+                         "editButton info";
+}
+
+.editButton {
+    grid-area: editButton;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #157575;
+    padding: 5px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.editButton:hover {
+    color: #157575;
+    background-color: white;
 }
 
 .info {
+    grid-area: info;
     display: grid;
     grid-template-areas: "name contacts"
                          "status contacts"
@@ -48,9 +68,37 @@
     grid-area: contacts;
 }
 
+.avatarBlock {
+    grid-area: avatar;
+    position: relative;
+}
+
 .avatar {
     width: 150px;
     height: 150px;
     display: block;
     border-radius: 10px;
+}
+
+.uploadAvatarButton {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSen26eZXLnxJJXMkaBodjY29ohAAiqQ8hbg&usqp=CAU");
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.uploadAvatarButton:hover {
+    transform: scale(1.1);
+}
+
+.avatarBlock:hover .uploadAvatarButton {
+    display: block;
 }

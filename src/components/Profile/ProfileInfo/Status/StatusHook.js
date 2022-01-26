@@ -20,7 +20,7 @@ const StatusHook = (props) => {
 					onChange={e => setStatus(e.target.value)}
 					placeholder={'Enter your status'}
 				/>
-				: <span onDoubleClick={() => setEditMode(true)}>{props.status || 'Enter your status'}</span>
+				: <span onDoubleClick={props.isOwner ? () => setEditMode(true) : undefined}>{props.status}</span>
 			}
 		</div>
 	);

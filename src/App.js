@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -30,6 +30,10 @@ class App extends React.Component {
 				<NavbarContainer/>
 				<div className="content">
 					<Route
+						exact path="/"
+						render={() => <Redirect to={'/profile'}/>}
+					/>
+					<Route
 						path="/login"
 						render={() => <Login/>}
 					/>
@@ -39,10 +43,6 @@ class App extends React.Component {
 					/>
 					<Route
 						path="/profile/:userId?"
-						render={() => <ProfileContainer/>}
-					/>
-					<Route
-						exact path="/profile/me"
 						render={() => <ProfileContainer/>}
 					/>
 					<Route

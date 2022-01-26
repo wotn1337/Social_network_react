@@ -26,7 +26,21 @@ export const profileAPI = {
 
 	updateStatus(status) {
 		return instance.put(`profile/status`, {status});
-	}
+	},
+
+	updateAvatar(avatar) {
+		const data = new FormData();
+		data.append('image', avatar);
+		return instance.put('profile/photo', data, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		});
+	},
+
+	updateProfile(data) {
+		return instance.put('profile', JSON.stringify(data))
+	},
 };
 
 export const authAPI = {

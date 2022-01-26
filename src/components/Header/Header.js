@@ -14,7 +14,14 @@ const Header = (props) => {
 
 			<div className={s.loginBlock}>
 				{props.isAuth
-					? <div>{props.login} | <button onClick={props.logout}>Logout</button></div> :
+					? <div className={s.profileInfo}>{props.login} | <button onClick={props.logout} className={s.logoutButton}>
+						Logout
+						<img
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ic_arrow_back_36px.svg/240px-Ic_arrow_back_36px.svg.png"
+							alt="logout"
+							className={s.logoutArrow}
+						/>
+					</button></div> :
 					<NavLink to="/login">
 						<img
 							src="https://aux.iconspalace.com/uploads/login-icon-256.png"
