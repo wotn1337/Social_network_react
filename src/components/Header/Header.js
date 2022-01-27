@@ -21,8 +21,8 @@ const Header = (props) => {
 							alt="logout"
 							className={s.logoutArrow}
 						/>
-					</button></div> :
-					<NavLink to="/login">
+					</button></div>
+					: <NavLink to="/login">
 						<img
 							src="https://aux.iconspalace.com/uploads/login-icon-256.png"
 							alt="login"

@@ -5,6 +5,10 @@ import EditingProfile from "./EditingProfile";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvatar, updateProfile}) => {
 	const [editMode, setEditMode] = useState(false);
+	const toggleUpdateProfile = (data) => {
+		updateProfile(data)
+			.then(() => setEditMode(false));
+	};
 	const avatarPlaceHolder = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
 	return (
@@ -28,9 +32,8 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvatar, upda
 					updateStatus={updateStatus}
 					isOwner={isOwner}
 				/>
-				: <EditingProfile profile={profile} handleSubmit={updateProfile}/>
+				: <EditingProfile profile={profile} handleSubmit={toggleUpdateProfile}/>
 			}
-
 		</div>
 	);
 };

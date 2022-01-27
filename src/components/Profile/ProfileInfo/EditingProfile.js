@@ -12,7 +12,7 @@ const EditingProfile = ({profile, handleSubmit}) => {
 		<Formik
 			initialValues={{
 				userId: profile.userId,
-				FullName: profile.fullName,
+				fullName: profile.fullName,
 				lookingForAJob: profile.lookingForAJob,
 				lookingForAJobDescription: profile.lookingForAJobDescription,
 				contacts: profile.contacts
@@ -21,8 +21,8 @@ const EditingProfile = ({profile, handleSubmit}) => {
 		>
 			<Form>
 				<div>
-					<label htmlFor='FullName'>Full name: </label>
-					<Field name="FullName" id='FullName' type="text" />
+					<label htmlFor='fullName'>Full name: </label>
+					<Field name="fullName" id='fullName' type="text" required/>
 				</div>
 				<div>
 					<label htmlFor='lookingForAJob'>Looking for a job: </label>
@@ -43,7 +43,7 @@ const Contact = ({name}) => {
 	return (
 		<div>
 			<label htmlFor={name}>{name[0].toUpperCase() + name.slice(1)}: </label>
-			<Field name={name} id={name} type="text" />
+			<Field name={'contacts.' + name} id={name} type="text" />
 		</div>
 	);
 }

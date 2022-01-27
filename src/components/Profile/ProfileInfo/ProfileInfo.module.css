@@ -8,6 +8,7 @@
     border-radius: 10px;
     grid-template-areas: "avatar info"
                          "editButton info";
+    row-gap: 20px;
 }
 
 .editButton {

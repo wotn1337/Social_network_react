@@ -105,6 +105,7 @@ export const updateProfile = (data) => async () => {
 		//dispatch(updateAvatarSuccess(response.data.data.photos));
 		alert('success!');
 	}
+	return response;
 };
 
 
