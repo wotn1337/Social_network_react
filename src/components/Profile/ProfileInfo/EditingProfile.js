@@ -14,8 +14,9 @@ const EditingProfile = ({profile, handleSubmit}) => {
 				userId: profile.userId,
 				fullName: profile.fullName,
 				lookingForAJob: profile.lookingForAJob,
-				lookingForAJobDescription: profile.lookingForAJobDescription,
-				contacts: profile.contacts
+				lookingForAJobDescription: profile.lookingForAJobDescription || '',
+				contacts: profile.contacts,
+				aboutMe: profile.aboutMe || '',
 			}}
 			onSubmit={values => handleSubmit(values)}
 		>
@@ -31,6 +32,10 @@ const EditingProfile = ({profile, handleSubmit}) => {
 				<div>
 					<label htmlFor='lookingForAJobDescription'>Looking for a job description: </label>
 					<textarea name="lookingForAJobDescription" id='lookingForAJobDescription'/>
+				</div>
+				<div>
+					<label htmlFor='aboutMe'>About Me: </label>
+					<textarea name="aboutMe" id='aboutMe'/>
 				</div>
 				{contacts}
 				<button type="submit">Save</button>

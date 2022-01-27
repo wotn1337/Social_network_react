@@ -14,10 +14,11 @@ const LoginForm = (props) => {
 			initialValues={{
 				email: '',
 				password: '',
-				rememberMe: false
+				rememberMe: false,
+				captcha: ''
 			}}
 			onSubmit={(values, {setStatus}) => {
-				props.login(values.email, values.password, values.rememberMe, setStatus)
+				props.login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
 			}}
 			validate={(values) => {
 				const errors = {};
@@ -49,6 +50,17 @@ const LoginForm = (props) => {
 						<Field type={'checkbox'} name={'rememberMe'} id={'rememberMe'}/>
 						<label htmlFor={'rememberMe'}>Remember me</label>
 					</div>
+					{props.captchaUrl &&
+						<>
+							<div>
+								<img src={props.captchaUrl} alt="captcha"/>
+							</div>
+							<div>
+								<label htmlFor={'captcha'}>Captcha</label>
+								<Field type={'text'} name={'captcha'} id={'captcha'}/>
+							</div>
+						</>
+					}
 					<button type={'submit'} className={s.btn}>Login</button>
 				</Form>
 			)}
@@ -64,21 +76,20 @@ const Login = (props) => {
 		<>
 			<h1>Login</h1>
 			<div className={s.loginPage}>
-				<LoginForm login={props.login}/>
+				<LoginForm {...props}/>
 			</div>
 		</>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	isAuth: state.auth.isAuth
+	isAuth: state.auth.isAuth,
+	captchaUrl: state.auth.captchaUrl
 });
 
 
 export default compose(
-	connect(mapStateToProps, {
-		login
-	}),
+	connect(mapStateToProps, { login }),
 	withRouter
 )(Login);
 

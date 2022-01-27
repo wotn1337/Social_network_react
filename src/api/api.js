@@ -39,7 +39,7 @@ export const profileAPI = {
 	},
 
 	updateProfile(data) {
-		return instance.put('profile', JSON.stringify(data))
+		return instance.put('profile', data);
 	},
 };
 
@@ -48,11 +48,15 @@ export const authAPI = {
 		return instance.get('auth/me');
 	},
 
-	login(email, password, rememberMe = false) {
-		return instance.post('auth/login', {email, password, rememberMe});
+	login(email, password, rememberMe = false, captcha) {
+		return instance.post('auth/login', {email, password, rememberMe, captcha});
 	},
 
 	logout() {
 		return instance.delete('auth/login');
-	}
+	},
+
+	getCaptchaUrl() {
+		return instance.get('security/get-captcha-url');
+	},
 };
