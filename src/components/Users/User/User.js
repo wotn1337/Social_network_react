@@ -21,10 +21,6 @@ const User = (props) => {
 			<div className={`${s.userInfo} ${!props.followed ? s.unfollow : ''}`}>
 				<div className={s.name}>{props.name}</div>
 				<div className={s.status}>{props.status}</div>
-				<div className={s.location}>
-					<div className={s.country}>{props.location.country}</div>
-					<div className={s.city}>{props.location.city}</div>
-				</div>
 			</div>
 		</div>
 	);

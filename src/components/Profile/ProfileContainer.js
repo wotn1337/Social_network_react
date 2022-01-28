@@ -33,7 +33,7 @@ class ProfileContainer extends React.Component {
 
 	render() {
 		return (
-			<Profile {...this.props} {...this.state}/>
+			<Profile {...this.props} {...this.state} setProfile={this.setProfile}/>
 		);
 	}
 }

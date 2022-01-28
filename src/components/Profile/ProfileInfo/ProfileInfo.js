@@ -3,11 +3,14 @@ import React, {useState} from "react";
 import Info from "./Info";
 import EditingProfile from "./EditingProfile";
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvatar, updateProfile}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvatar, updateProfile, setProfile}) => {
 	const [editMode, setEditMode] = useState(false);
 	const toggleUpdateProfile = (data) => {
 		updateProfile(data)
-			.then(() => setEditMode(false));
+			.then(() => {
+				setEditMode(false);
+				setProfile();
+			});
 	};
 	const avatarPlaceHolder = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
@@ -24,7 +27,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, updateAvatar, upda
 				       onChange={e => updateAvatar(e.target.files[0])}/>
 				{isOwner && <label htmlFor="avatar" className={s.uploadAvatarButton}/>}
 			</div>
-			<button className={s.editButton} onClick={() => setEditMode(true)}>Edit profile</button>
+			{isOwner && <button className={s.editButton} onClick={() => setEditMode(!editMode)}>{editMode ? 'Don\'t save' : 'Edit profile'}</button>}
 			{!editMode
 				? <Info
 					profile={profile}

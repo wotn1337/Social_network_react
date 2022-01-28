@@ -1,6 +1,6 @@
 import React from 'react';
 import {Formik, Field, Form} from "formik";
-//import s from './EditingProfile.module.css';
+import s from './ProfileInfo.module.css';
 
 
 const EditingProfile = ({profile, handleSubmit}) => {
@@ -20,22 +20,22 @@ const EditingProfile = ({profile, handleSubmit}) => {
 			}}
 			onSubmit={values => handleSubmit(values)}
 		>
-			<Form>
-				<div>
+			<Form className={s.editForm}>
+				<div className={s.inputGroup + ' ' + s.linkInput}>
 					<label htmlFor='fullName'>Full name: </label>
 					<Field name="fullName" id='fullName' type="text" required/>
 				</div>
 				<div>
 					<label htmlFor='lookingForAJob'>Looking for a job: </label>
-					<Field name="lookingForAJob" id='lookingForAJob' type="checkbox" />
+					<Field name="lookingForAJob" id='lookingForAJob' type="checkbox"/>
 				</div>
-				<div>
+				<div className={s.inputGroup}>
 					<label htmlFor='lookingForAJobDescription'>Looking for a job description: </label>
-					<textarea name="lookingForAJobDescription" id='lookingForAJobDescription'/>
+					<Field as='textarea' name="lookingForAJobDescription" id='lookingForAJobDescription' required/>
 				</div>
-				<div>
+				<div className={s.inputGroup}>
 					<label htmlFor='aboutMe'>About Me: </label>
-					<textarea name="aboutMe" id='aboutMe'/>
+					<Field as='textarea' name="aboutMe" id='aboutMe' required/>
 				</div>
 				{contacts}
 				<button type="submit">Save</button>
@@ -46,7 +46,7 @@ const EditingProfile = ({profile, handleSubmit}) => {
 
 const Contact = ({name}) => {
 	return (
-		<div>
+		<div className={s.inputGroup + ' ' + s.linkInput}>
 			<label htmlFor={name}>{name[0].toUpperCase() + name.slice(1)}: </label>
 			<Field name={'contacts.' + name} id={name} type="text" />
 		</div>

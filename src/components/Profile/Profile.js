@@ -26,6 +26,7 @@ const Profile = (props) => {
 				isOwner={props.isOwner}
 				updateAvatar={props.updateAvatar}
 				updateProfile={props.updateProfile}
+				setProfile={props.setProfile}
 			/>
 			<MyPostsContainer/>
 		</div>

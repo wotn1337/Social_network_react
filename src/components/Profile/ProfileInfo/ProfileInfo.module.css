@@ -103,3 +103,55 @@
 .avatarBlock:hover .uploadAvatarButton {
     display: block;
 }
+
+.editForm {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+}
+
+.editForm label {
+    margin-right: 10px;
+}
+
+.editForm input:not([type='checkbox']) {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 300px;
+}
+
+.editForm .inputGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.editForm .linkInput {
+    width: 55%;
+}
+
+.editForm textarea {
+    height: 150px;
+    resize: none;
+    flex: 1;
+    border-radius: 5px;
+    border: none;
+}
+
+.editForm button {
+    font-size: 26px;
+    width: 200px;
+    padding: 5px;
+    background-color: #157575;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editForm button:hover {
+    background-color: white;
+    color: #157575;
+
+}

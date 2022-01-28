@@ -20,10 +20,6 @@ const Users = (props) => {
 			avatar={user.photos.small}
 			name={user.name}
 			status={user.status}
-			location={{
-				country: 'Mother Russia',
-				city: 'Unknown'
-			}}
 			followed={user.followed}
 			follow={() => props.follow(user.id)}
 			unfollow={() => props.unfollow(user.id)}
