@@ -1,8 +1,11 @@
 import React from "react";
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import { propsType } from "./HeaderContainer";
 
-const Header = (props) => {
+
+
+const Header = (props: propsType) => {
 	return (
 		<header className={s.header}>
 			<img

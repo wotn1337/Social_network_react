@@ -49,6 +49,7 @@ export const authAPI = {
 	},
 
 	login(email, password, rememberMe = false, captcha) {
+		debugger
 		return instance.post('auth/login', {email, password, rememberMe, captcha});
 	},
 

@@ -4,11 +4,16 @@ import s from './Login.module.css';
 import {requiredField} from "../../utils/validators/validators";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {login} from "../../redux/authReducer";
+import {initialStateType, login} from "../../redux/authReducer";
 import {Redirect, withRouter} from "react-router-dom";
 
+type propsType = {
+	captchaUrl: string | null
+	login: (email: string, password: string, rememberMe: boolean, captcha: string | null, setStatus: (messages: any) => void) => void,
+	isAuth: boolean
+}
 
-const LoginForm = (props) => {
+const LoginForm = (props: propsType) => {
 	return (
 		<Formik
 			initialValues={{
@@ -18,16 +23,22 @@ const LoginForm = (props) => {
 				captcha: ''
 			}}
 			onSubmit={(values, {setStatus}) => {
+				alert('!!!!')
 				props.login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
 			}}
 			validate={(values) => {
-				const errors = {};
+				const errors = {
+					email: undefined,
+					password: undefined
+				};
 				const emailErr = requiredField(values.email);
 				const passErr = requiredField(values.password);
 				if (emailErr) {
+					// @ts-ignore
 					errors.email = emailErr;
 				}
 				if (passErr) {
+					// @ts-ignore
 					errors.password = passErr;
 				}
 				return errors;
@@ -68,7 +79,7 @@ const LoginForm = (props) => {
 	);
 };
 
-const Login = (props) => {
+const Login = (props: propsType) => {
 	if (props.isAuth) {
 		return <Redirect to={'/profile'}/>;
 	}
@@ -81,8 +92,8 @@ const Login = (props) => {
 		</>
 	);
 };
-
-const mapStateToProps = (state) => ({
+type stateType = { auth: initialStateType }
+const mapStateToProps = (state: stateType) => ({
 	isAuth: state.auth.isAuth,
 	captchaUrl: state.auth.captchaUrl
 });

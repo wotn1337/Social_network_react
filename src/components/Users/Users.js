@@ -2,17 +2,11 @@ import React from "react";
 import s from "./Users.module.css";
 import User from "./User/User";
 import Preloader from "../common/Preloader/Preloader";
+import Paginator from "../common/Paginator/Paginator";
 
 const Users = (props) => {
 	const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-	const pages = [];
-	for (let i = 1; i <= pagesCount; i++) {
-		pages.push(<div
-			className={`${s.button} ${props.currentPage === i ? s.selected : ''}`}
-			onClick={() => props.changePage(i)}
-			key={i}
-		>{i}</div>);
-	}
+
 	const users = props.users.map(user => (
 		<User
 			key={user.id}
@@ -29,11 +23,15 @@ const Users = (props) => {
 
 	return (
 		<div className={s.users}>
-			<div className={s.pagination}>
-				{pages}
-			</div>
-			{props.isFetching && <Preloader/>}
-			{users}
+			<Paginator
+				currentPage={props.currentPage}
+				totalPagesCount={pagesCount}
+				changePage={props.changePage}
+			/>
+			{props.isFetching
+				? <Preloader/>
+				: users
+			}
 		</div>
 	);
 };
