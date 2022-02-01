@@ -42,7 +42,7 @@ const getPages = (currentPage: number, totalCount: number, changePage: (page: nu
     return result;
 }
 
-const Paginator = ({currentPage, totalPagesCount, changePage}: propsType) => {
+const Paginator: React.FC<propsType> = ({currentPage, totalPagesCount, changePage}) => {
     return (
         <div className={s.paginator}>
             <div

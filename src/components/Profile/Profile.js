@@ -10,7 +10,7 @@ const Profile = (props) => {
 	}
 
 	return (
-		<div>
+		<div className={s.content}>
 			<div>
 				<img
 					className={s.main_image}

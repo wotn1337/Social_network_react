@@ -67,8 +67,8 @@ const profileReducer = (state = initialState, action: any): initialStateType => 
 	}
 }
 
-type addPostACType = { type: typeof ADD_POST, post: postType }
-export const addPost = (post: postType): addPostACType => ({type: ADD_POST, post});
+type addPostACType = { type: typeof ADD_POST, post: string }
+export const addPost = (post: string): addPostACType => ({type: ADD_POST, post});
 
 type setUserProfileAccessActionType = { type: typeof SET_USER_PROFILE, profile: profileType}
 export const setUserProfileAccess = (profile: profileType): setUserProfileAccessActionType => ({type: SET_USER_PROFILE, profile});
@@ -104,6 +104,7 @@ export const updateAvatar = (avatar: any) => async (dispatch: Function) => {
 	if (response.data.resultCode === 0) {
 		dispatch(updateAvatarSuccess(response.data.data.photos));
 	}
+	return response;
 };
 
 export const updateProfile = (data: any) => async () => {

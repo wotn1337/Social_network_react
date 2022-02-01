@@ -1,20 +1,27 @@
 import React from "react";
 import s from "./Users.module.css";
 import User from "./User/User";
-import Preloader from "../common/Preloader/Preloader";
 import Paginator from "../common/Paginator/Paginator";
+import {userType} from "../../types/types";
 
-const Users = (props) => {
+type propsType = {
+	totalUsersCount: number,
+	pageSize: number,
+	users: Array<userType>,
+	currentPage: number,
+	changePage: (page: number) => void,
+	follow: (userId: number) => void,
+	unfollow: (userId: number) => void,
+	followingInProgress: Array<number>, // array of user id's
+}
+
+const Users: React.FC<propsType> = (props) => {
 	const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
 	const users = props.users.map(user => (
 		<User
 			key={user.id}
-			id={user.id}
-			avatar={user.photos.small}
-			name={user.name}
-			status={user.status}
-			followed={user.followed}
+			user={user}
 			follow={() => props.follow(user.id)}
 			unfollow={() => props.unfollow(user.id)}
 			followingInProgress={props.followingInProgress}
@@ -28,10 +35,12 @@ const Users = (props) => {
 				totalPagesCount={pagesCount}
 				changePage={props.changePage}
 			/>
-			{props.isFetching
-				? <Preloader/>
-				: users
-			}
+			{users}
+			<Paginator
+				currentPage={props.currentPage}
+				totalPagesCount={pagesCount}
+				changePage={props.changePage}
+			/>
 		</div>
 	);
 };

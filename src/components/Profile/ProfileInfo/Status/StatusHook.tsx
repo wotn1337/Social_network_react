@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from "react";
 import s from './Status.module.css';
 
-const StatusHook = (props) => {
+type propsType = {
+	status: string,
+	updateStatus: (status: string) => Promise<void>,
+	isOwner: boolean
+}
+
+const StatusHook: React.FC<propsType> = ({isOwner, ...props}) => {
 	const [editMode, setEditMode] = useState(false);
 	const [status, setStatus] = useState(props.status);
+
 	useEffect(() => setStatus(props.status), [props.status]);
+
 	const updateStatus = () => {
-		setEditMode(false);
-		props.updateStatus(status);
+		props.updateStatus(status)
+			.then(() => setEditMode(false));
 	}
+
 	return (
 		<div className={s.status}>
 			{editMode
@@ -20,7 +29,7 @@ const StatusHook = (props) => {
 					onChange={e => setStatus(e.target.value)}
 					placeholder={'Enter your status'}
 				/>
-				: <span onDoubleClick={props.isOwner ? () => setEditMode(true) : undefined}>{props.status}</span>
+				: <span onDoubleClick={isOwner ? () => setEditMode(true) : undefined}>{props.status}</span>
 			}
 		</div>
 	);

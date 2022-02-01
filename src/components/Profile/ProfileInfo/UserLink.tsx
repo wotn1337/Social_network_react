@@ -1,6 +1,15 @@
 import React from 'react';
 
-const images = {
+type propsType = {
+	link: string,
+	name: string
+}
+
+interface imagesInterface {
+	[index: string]: string;
+}
+
+const images: imagesInterface = {
 	facebook: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png',
 	website: 'https://w7.pngwing.com/pngs/549/715/png-transparent-web-development-logo-website-web-design-symmetry-internet.png',
 	vk: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2048px-VK.com-logo.svg.png',
@@ -11,7 +20,7 @@ const images = {
 	mainLink: 'https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg'
 };
 
-const UserLink = ({link, name}) => {
+const UserLink: React.FC<propsType> = ({link, name}) => {
 	return (
 		<a href={link} target="._blank">
 			<img width="20px" height="20px" src={images[name]} alt={name}/>

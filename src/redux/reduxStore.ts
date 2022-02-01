@@ -8,7 +8,7 @@ import authReducer from "./authReducer";
 import appReducer from "./appReducer";
 
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
 	profile: profileReducer,
 	dialogs: dialogsReducer,
 	navbar: navbarReducer,
@@ -17,8 +17,9 @@ const reducers = combineReducers({
 	app: appReducer
 });
 
-const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+type rootReducerType = typeof rootReducer;
+export type appStateType = ReturnType<rootReducerType>;
 
-window.store = store;
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;
