@@ -1,4 +1,6 @@
 import {authAPI} from "../api/api";
+import {ThunkAction} from "redux-thunk";
+import {appStateType} from "./reduxStore";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_CAPTCHA_URL = 'auth/SET_CAPTCHA_URL';
@@ -19,7 +21,7 @@ const initialState: initialStateType = {
     captchaUrl: null
 };
 
-const authReducer = (state = initialState, action: any): initialStateType => {
+const authReducer = (state = initialState, action: ActionsTypes): initialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -35,6 +37,8 @@ const authReducer = (state = initialState, action: any): initialStateType => {
             return state;
     }
 };
+
+type ActionsTypes = setAuthUserDataActionType | setCaptchaUrlActionType
 
 type setAuthUserDataActionDataType = { id: number | null, email: string | null, login: string | null }
 type setAuthUserDataActionType = {
@@ -54,7 +58,9 @@ type setCaptchaUrlActionType = {
 }
 const setCaptchaUrl = (url: string): setCaptchaUrlActionType => ({type: SET_CAPTCHA_URL, url});
 
-export const auth = () => async (dispatch: Function) => {
+type ThunkType = ThunkAction<Promise<void>, appStateType, unknown, ActionsTypes>
+
+export const auth = (): ThunkType => async (dispatch) => {
     const response = await authAPI.auth();
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(
@@ -66,27 +72,29 @@ export const auth = () => async (dispatch: Function) => {
     }
 };
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null, setStatus: (messages: any) => void) => async (dispatch: any) => {
+export const login = (
+    email: string, password: string, rememberMe: boolean, captcha: string | null, setStatus: (messages: any) => void
+): ThunkType => async (dispatch) => {
     debugger
     const response = await authAPI.login(email, password, rememberMe, captcha);
     if (response.data.resultCode === 0) {
-        dispatch(auth());
+        await dispatch(auth());
     } else {
         if (response.data.resultCode === 10) {
             setStatus(response.data.messages);
-            dispatch(getCaptchaUrl());
+            await dispatch(getCaptchaUrl());
         }
     }
 };
 
-export const logout = () => async (dispatch: Function) => {
+export const logout = (): ThunkType => async (dispatch) => {
     const response = await authAPI.logout();
     if (response.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
     }
 };
 
-export const getCaptchaUrl = () => async (dispatch: Function) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const response = await authAPI.getCaptchaUrl();
     dispatch(setCaptchaUrl(response.data.url));
 };
